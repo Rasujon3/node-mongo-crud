@@ -28,6 +28,13 @@ client.connect(err => {
       })
   })
 
+  app.get('/product/:id',(req,res)=>{
+      productCollection.find({_id:ObjectId(req.params.id)})
+      .toArray((err,documents)=>{
+          res.send(documents[0]);
+      })
+  })
+
   app.post("/addProduct", (req,res)=>{
     const product = req.body;
     productCollection.insertOne(product)
