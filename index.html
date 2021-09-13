@@ -54,9 +54,24 @@
                    quantity: <input tyoe="text" value="${data.quantity}" id="quantity"> 
                 </br>
 
-                   <button>Update</button>
+                   <button onclick="updateProduct('${data._id}')">Update</button>
 
                    `;
+                })
+        }
+
+        function updateProduct(id) {
+            const price = document.getElementById('price').value;
+            const quantity = document.getElementById('quantity').value;
+            const product = { id, price, quantity };
+            fetch(`/update/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(product)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('updated');
                 })
         }
 
