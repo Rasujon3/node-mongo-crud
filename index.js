@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const password = '$DyyzYPq9JCm-FW';
 
 const { MongoClient } = require('mongodb');
+const ObjectId = require('mongodb').ObjectId;
+
 const uri = "mongodb+srv://organicUser:$DyyzYPq9JCm-FW@cluster0.3l9g8.mongodb.net/organicdb?retryWrites=true&w=majority";
 
 const app = express();
@@ -34,6 +36,14 @@ client.connect(err => {
         res.send('success');
     })
   })
+
+  app.delete('/delete/:id',(req,res) =>{
+      productCollection.deleteOne({_id: ObjectId(req.params.id)})
+      .then (result =>{
+          console.log(result);
+      })
+  })
+
 });
 
 // client.connect(err => {
