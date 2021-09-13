@@ -39,7 +39,6 @@ client.connect(err => {
     const product = req.body;
     productCollection.insertOne(product)
     .then(result =>{
-        console.log('data added successfully');
         res.redirect('/');
     })
   })
@@ -62,16 +61,5 @@ client.connect(err => {
   })
 
 });
-
-// client.connect(err => {
-//     const productCollection = client.db("organicdb").collection("products");
-//     app.post("/addProduct", (req,res)=>{
-//       collection.insertOne(product)
-//       .then(result=>{
-//           console.log('one product added');
-//       })
-//     })
-//   });
-
 
 app.listen(3000);

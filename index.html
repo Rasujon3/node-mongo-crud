@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mongo CRUD</title>
 </head>
 
 <body>
-    <h1>Look mom, I have a mongo database!!!</h1>
+    <h1>First try CRUD function in MongoDB database!!!</h1>
     <form action="/addProduct" method="post">
         <input type="text" placeholder="Name" name="name">
         <input type="text" placeholder="Price" name="price">
@@ -27,7 +27,6 @@
             fetch('/products')
                 .then(res => res.json())
                 .then(products => {
-                    console.log(products);
                     const container = document.getElementById('products');
                     container.innerHTML = '';
                     products.forEach(pd => {
